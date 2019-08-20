@@ -47,6 +47,8 @@
         android:textSize="16sp"
         android:focusable="true"
         android:clickable="true"
+        android:drawableLeft="@drawable/ic_star"
+        android:drawablePadding="20dp"
         android:background="@drawable/bg_click_selector"/>
 
     <View
@@ -68,6 +70,8 @@
         android:textSize="16sp"
         android:focusable="true"
         android:clickable="true"
+        android:drawableLeft="@drawable/ic_todo"
+        android:drawablePadding="20dp"
         android:background="@drawable/bg_click_selector"/>
 
     <View
@@ -95,5 +99,6 @@
         android:clickable="true"
         android:textColor="@color/color_3a94da"
         android:textSize="16sp"
+        android:drawableLeft="@drawable/ic_logout"
         android:background="@drawable/bg_click_selector"/>
 </RelativeLayout>

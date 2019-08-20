@@ -1,17 +1,19 @@
 package com.android.haozi.wanandroid.ui.activity
 
-import android.content.res.ColorStateList
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.support.v4.content.ContextCompat
 import android.support.v4.view.GravityCompat
 import android.view.MenuItem
+import android.view.View
 import com.android.haozi.wanandroid.R
 import kotlinx.android.synthetic.main.common_toolbar_layout.*
 import kotlinx.android.synthetic.main.main_activity_draw_layout.*
 import kotlinx.android.synthetic.main.main_activity_layout.*
+import kotlinx.android.synthetic.main.main_activity_navigation_layout.*
 
-class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelectedListener{
+class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelectedListener
+                    , View.OnClickListener{
 
     override fun getLayoutId(): Int {
         return R.layout.main_activity_layout
@@ -25,6 +27,7 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
 
     private fun initViewClick() {
         main_bottomnavigation.setOnNavigationItemSelectedListener(this)
+        main_menu_collection.setOnClickListener(this)
     }
 
     private fun initNavigation() {
@@ -65,5 +68,21 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
             }
         }
         return true;
+    }
+
+    override fun onClick(v: View?) {
+        when(v?.id){
+            R.id.main_menu_collection -> {
+                var intent = Intent(this,CollectionActivity::class.java)
+                var bundle = Bundle();
+                startActivity(intent)
+            }
+
+            R.id.main_menu_todo -> {
+            }
+
+            R.id.main_menu_logout -> {
+            }
+        }
     }
 }

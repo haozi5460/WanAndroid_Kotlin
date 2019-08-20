@@ -16,7 +16,7 @@
         android:layout_gravity="start"
         android:background="#f7f7f7">
         <include
-            layout="@layout/main_activity_navigation_headlayout"/>
+            layout="@layout/main_activity_navigation_layout"/>
     </android.support.design.widget.NavigationView>
 
 </android.support.v4.widget.DrawerLayout>
