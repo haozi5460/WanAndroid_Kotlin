@@ -8,5 +8,6 @@ data class DataBean (var admin: Boolean = false,
                         var id: Int = 0,
                         var nickname: String? = null,
                         var password: String? = null,
-                        var token: Long = 0,
+                        var token: String? = null,
+                        var type: Int = 0,
                         var username: String? = null)

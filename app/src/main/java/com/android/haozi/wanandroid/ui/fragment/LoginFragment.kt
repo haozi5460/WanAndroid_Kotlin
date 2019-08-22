@@ -6,11 +6,16 @@ import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.navigation.Navigation
 import com.android.haozi.wanandroid.R
+import com.android.haozi.wanandroid.bean.DataBean
+import com.android.haozi.wanandroid.bean.ResponseBean
+import com.android.haozi.wanandroid.common.Constant
 import com.android.haozi.wanandroid.ui.activity.MainActivity
+import com.android.haozi.wanandroid.utils.PreferenceUtil
 import com.android.haozi.wanandroid.viewmode.LoginViewMode
 import kotlinx.android.synthetic.main.login_fragment_layout.*
 
@@ -31,14 +36,26 @@ class LoginFragment : BaseFragment(), View.OnClickListener {
     private fun initViewMode() {
         loginViewMode = ViewModelProviders.of(this)[LoginViewMode::class.java]
         loginViewMode.loginData?.observe(this, Observer {
-            if(it?.errorCOde == 0){
-                startActivity(Intent(activity, MainActivity::class.java))
-                activity?.finish()
+            Log.i("shihao","response ="+it?.toString());
+            if(it?.errorCode == 0 && TextUtils.isEmpty(it.errorMsg)){
+                saveUserInfo(it)
                 Toast.makeText(context, "Login Success.", Toast.LENGTH_SHORT).show()
             }else{
                 Toast.makeText(context,it?.errorMsg,Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    private fun saveUserInfo(responseBean: ResponseBean<DataBean>) {
+        var userName: String by PreferenceUtil(Constant.UserName,"")
+        var userId: Int by PreferenceUtil(Constant.UserId,0)
+        var hasUserLogin: Boolean by PreferenceUtil(Constant.HasUserLogin, false)
+        userName = responseBean.data?.username!!
+        userId = responseBean.data?.id
+        hasUserLogin = true
+
+        startActivity(Intent(activity, MainActivity::class.java))
+        activity?.finish()
     }
 
     private fun initViewClick() {

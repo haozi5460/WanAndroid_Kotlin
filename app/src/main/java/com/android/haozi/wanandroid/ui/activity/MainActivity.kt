@@ -1,12 +1,18 @@
 package com.android.haozi.wanandroid.ui.activity
 
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.view.GravityCompat
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import com.android.haozi.wanandroid.R
+import com.android.haozi.wanandroid.common.Constant
+import com.android.haozi.wanandroid.utils.PreferenceUtil
+import com.android.haozi.wanandroid.viewmode.LoginViewMode
 import kotlinx.android.synthetic.main.common_toolbar_layout.*
 import kotlinx.android.synthetic.main.main_activity_draw_layout.*
 import kotlinx.android.synthetic.main.main_activity_layout.*
@@ -14,6 +20,7 @@ import kotlinx.android.synthetic.main.main_activity_navigation_layout.*
 
 class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelectedListener
                     , View.OnClickListener{
+    var logoutViewMode: LoginViewMode? = null
 
     override fun getLayoutId(): Int {
         return R.layout.main_activity_layout
@@ -23,11 +30,30 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
         super.onCreate(savedInstanceState)
         initNavigation()
         initViewClick()
+        initViewData()
+        initViewModle()
+    }
+
+    private fun initViewModle() {
+        logoutViewMode = ViewModelProviders.of(this)[LoginViewMode::class.java]
+        logoutViewMode?.logOutData?.observe(this, Observer {
+            Toast.makeText(this, it?.errorMsg,Toast.LENGTH_SHORT).show()
+            if(it?.errorCode == 200){
+                startActivity(Intent(this, LoginActivity::class.java))
+                this.finish()
+            }
+        })
+    }
+
+    private fun initViewData() {
+        var userName by PreferenceUtil(Constant.UserName, "Android")
+        account_name.text = userName
     }
 
     private fun initViewClick() {
         main_bottomnavigation.setOnNavigationItemSelectedListener(this)
         main_menu_collection.setOnClickListener(this)
+        main_menu_logout.setOnClickListener(this)
     }
 
     private fun initNavigation() {
@@ -82,7 +108,12 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
             }
 
             R.id.main_menu_logout -> {
+                logOutAccount()
             }
         }
+    }
+
+    private fun logOutAccount() {
+        logoutViewMode?.logOut()
     }
 }

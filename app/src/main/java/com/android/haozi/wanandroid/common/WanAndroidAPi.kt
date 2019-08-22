@@ -3,10 +3,7 @@ package com.android.haozi.wanandroid.common
 import com.android.haozi.wanandroid.bean.DataBean
 import com.android.haozi.wanandroid.bean.ResponseBean
 import io.reactivex.Observable
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface WanAndroidAPi {
 

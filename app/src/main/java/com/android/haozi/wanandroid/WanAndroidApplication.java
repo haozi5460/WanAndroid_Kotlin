@@ -1,6 +1,7 @@
 package com.android.haozi.wanandroid;
 
 import android.app.Application;
+import com.android.haozi.wanandroid.utils.PreferenceUtil;
 import com.facebook.drawee.backends.pipeline.Fresco;
 
 public class WanAndroidApplication extends Application {
@@ -9,5 +10,6 @@ public class WanAndroidApplication extends Application {
     public void onCreate() {
         super.onCreate();
         Fresco.initialize(this);
+        PreferenceUtil.Companion.init(getApplicationContext());
     }
 }
