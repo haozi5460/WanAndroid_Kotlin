@@ -48,8 +48,5 @@ dependencies {
 
     // ViewModel and LiveData
     implementation "android.arch.lifecycle:extensions:1.1.1"
-//
-//    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version" // For Kotlin use kapt instead of annotationProcessor
-//    // optional - ReactiveStreams support for LiveData
-//    implementation "androidx.lifecycle:lifecycle-reactivestreams:$lifecycle_version" // For Kotlin use lifecycle-reactivestreams-ktx
+    implementation "me.saket:inboxrecyclerview:2.0.0-beta1"
 }

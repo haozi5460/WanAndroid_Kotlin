@@ -13,3 +13,7 @@ object Constant{
     val UserName = "UserName"
     val UserId = "UserId"
 }
+
+object HomeApi{
+    const val api_article_list = "/article/list/{pageIndex}/json"
+}

@@ -10,7 +10,7 @@ import android.util.Log
 import com.android.haozi.wanandroid.ui.activity.MainActivity
 import android.view.View
 import android.widget.Toast
-import com.android.haozi.wanandroid.bean.DataBean
+import com.android.haozi.wanandroid.bean.UserDataBean
 import com.android.haozi.wanandroid.bean.ResponseBean
 import com.android.haozi.wanandroid.common.Constant
 import com.android.haozi.wanandroid.utils.PreferenceUtil
@@ -71,7 +71,7 @@ class RegisterFragment : BaseFragment() {
         })
     }
 
-    private fun recordAccount(responseBean: ResponseBean<DataBean>) {
+    private fun recordAccount(responseBean: ResponseBean<UserDataBean>) {
         var userName by PreferenceUtil(Constant.UserName, "")
         var userId by PreferenceUtil(Constant.UserId, 0)
         var hasLogin by PreferenceUtil(Constant.HasUserLogin, false)

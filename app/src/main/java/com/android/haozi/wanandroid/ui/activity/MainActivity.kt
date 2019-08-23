@@ -1,6 +1,8 @@
 package com.android.haozi.wanandroid.ui.activity
 
 import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModel
+import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
@@ -11,6 +13,7 @@ import android.view.View
 import android.widget.Toast
 import com.android.haozi.wanandroid.R
 import com.android.haozi.wanandroid.common.Constant
+import com.android.haozi.wanandroid.repository.LoginRepositroy
 import com.android.haozi.wanandroid.utils.PreferenceUtil
 import com.android.haozi.wanandroid.viewmode.LoginViewMode
 import kotlinx.android.synthetic.main.common_toolbar_layout.*
@@ -35,11 +38,18 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
     }
 
     private fun initViewModle() {
-        logoutViewMode = ViewModelProviders.of(this)[LoginViewMode::class.java]
+        logoutViewMode = ViewModelProviders.of(this, object: ViewModelProvider.Factory{
+            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+                return LoginViewMode(LoginRepositroy()) as T
+            }
+        })[LoginViewMode::class.java]
+
         logoutViewMode?.logOutData?.observe(this, Observer {
             Toast.makeText(this, it?.errorMsg,Toast.LENGTH_SHORT).show()
             if(it?.errorCode == 200){
                 startActivity(Intent(this, LoginActivity::class.java))
+                var hasUserLogin by PreferenceUtil(Constant.HasUserLogin,false)
+                hasUserLogin = false
                 this.finish()
             }
         })
