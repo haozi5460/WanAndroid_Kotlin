@@ -1,6 +1,6 @@
 package com.android.haozi.wanandroid.repository
 
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 import android.text.TextUtils
 import com.android.haozi.wanandroid.bean.HomeArticleDataBean
 import com.android.haozi.wanandroid.bean.ResponseBean

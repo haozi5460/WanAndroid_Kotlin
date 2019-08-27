@@ -1,6 +1,6 @@
 package com.android.haozi.wanandroid.viewmode
 
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 import com.android.haozi.wanandroid.repository.ArticleRepository
 
 class ArticleViewMode(val articleRepository: ArticleRepository) : ViewModel(){

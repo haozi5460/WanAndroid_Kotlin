@@ -4,24 +4,17 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-
-    <me.saket.inboxrecyclerview.InboxRecyclerView
-            android:layout_width=""
-            android:layout_height="">
-
-    </me.saket.inboxrecyclerview.InboxRecyclerView>
-
-    <android.support.v4.widget.SwipeRefreshLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/main_home_swipe_refresh"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/main_home_recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-        </android.support.v7.widget.RecyclerView>
-    </android.support.v4.widget.SwipeRefreshLayout>
+        </androidx.recyclerview.widget.RecyclerView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 </LinearLayout>

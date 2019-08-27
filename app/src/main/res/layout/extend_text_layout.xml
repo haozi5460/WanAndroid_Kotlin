@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_3a94da">
+
+    <TextView
+            android:id="@+id/extend_layout_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="一级分类"
+            android:textSize="17sp"
+            android:textColor="@color/color_white"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/extend_layout_horizontal_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/extend_layout_title"
+            android:layout_toLeftOf="@+id/extend_layout_btn">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/extend_layout_vertical_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/extend_layout_title"
+            android:layout_toLeftOf="@+id/extend_layout_btn"
+            android:visibility="gone">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <ImageView
+            android:id="@+id/extend_layout_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_down"
+            android:layout_below="@+id/extend_layout_title"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="10dp"/>
+</RelativeLayout>

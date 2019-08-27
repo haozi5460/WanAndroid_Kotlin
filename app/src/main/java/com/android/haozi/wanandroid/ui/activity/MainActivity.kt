@@ -1,13 +1,13 @@
 package com.android.haozi.wanandroid.ui.activity
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
-import android.support.v4.view.GravityCompat
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.core.view.GravityCompat
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast

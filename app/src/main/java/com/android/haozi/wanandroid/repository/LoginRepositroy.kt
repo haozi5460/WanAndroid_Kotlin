@@ -1,6 +1,6 @@
 package com.android.haozi.wanandroid.repository
 
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 import com.android.haozi.wanandroid.bean.UserDataBean
 import com.android.haozi.wanandroid.bean.ResponseBean
 import com.android.haozi.wanandroid.common.RetrofitManager

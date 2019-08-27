@@ -1,8 +1,8 @@
 package com.android.haozi.wanandroid.ui.activity
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import butterknife.ButterKnife
+import androidx.appcompat.app.AppCompatActivity
+//import butterknife.ButterKnife
 
 abstract class BaseActivity : AppCompatActivity() {
 
@@ -11,6 +11,6 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutId())
-        ButterKnife.bind(this)
+//        ButterKnife.bind(this)
     }
 }

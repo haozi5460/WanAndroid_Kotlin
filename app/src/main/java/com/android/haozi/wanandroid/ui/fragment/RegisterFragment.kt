@@ -1,7 +1,7 @@
 package com.android.haozi.wanandroid.ui.fragment
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.android.haozi.wanandroid.R
 import android.content.Intent
 import android.os.Bundle
@@ -10,9 +10,12 @@ import android.util.Log
 import com.android.haozi.wanandroid.ui.activity.MainActivity
 import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.android.haozi.wanandroid.bean.UserDataBean
 import com.android.haozi.wanandroid.bean.ResponseBean
 import com.android.haozi.wanandroid.common.Constant
+import com.android.haozi.wanandroid.repository.LoginRepositroy
 import com.android.haozi.wanandroid.utils.PreferenceUtil
 import com.android.haozi.wanandroid.viewmode.LoginViewMode
 import kotlinx.android.synthetic.main.register_fragment_layout.*
@@ -30,7 +33,12 @@ class RegisterFragment : BaseFragment() {
     }
 
     private fun initViewModel() {
-        registerViewModel = ViewModelProviders.of(this)[LoginViewMode::class.java]
+        registerViewModel = ViewModelProviders.of(this, object : ViewModelProvider.Factory{
+            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+                return LoginViewMode(LoginRepositroy()) as T
+            }
+
+        })[LoginViewMode::class.java]
     }
 
     private fun initViewClick() {

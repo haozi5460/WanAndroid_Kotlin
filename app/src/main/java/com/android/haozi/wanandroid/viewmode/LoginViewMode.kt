@@ -1,7 +1,7 @@
 package com.android.haozi.wanandroid.viewmode
 
-import android.arch.lifecycle.Transformations
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.Transformations
+import androidx.lifecycle.ViewModel
 import com.android.haozi.wanandroid.repository.LoginRepositroy
 
 class LoginViewMode(val loginRepositroy: LoginRepositroy) : ViewModel(){
