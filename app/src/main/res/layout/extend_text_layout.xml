@@ -10,7 +10,7 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="一级分类"
-            android:textSize="17sp"
+            android:textSize="15sp"
             android:textColor="@color/color_white"/>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -18,7 +18,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/extend_layout_title"
-            android:layout_toLeftOf="@+id/extend_layout_btn">
+            android:layout_toLeftOf="@+id/extend_layout_btn"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -28,7 +30,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/extend_layout_title"
             android:layout_toLeftOf="@+id/extend_layout_btn"
-            android:visibility="gone">
+            android:visibility="gone"
+            android:layout_marginBottom="5dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -40,5 +43,6 @@
             android:layout_below="@+id/extend_layout_title"
             android:layout_alignParentRight="true"
             android:layout_marginRight="15dp"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"/>
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package com.android.haozi.wanandroid.common
 
+import com.android.haozi.wanandroid.bean.ArticleCategoryBean
 import com.android.haozi.wanandroid.bean.HomeArticleDataBean
 import com.android.haozi.wanandroid.bean.UserDataBean
 import com.android.haozi.wanandroid.bean.ResponseBean
@@ -23,4 +24,7 @@ interface WanAndroidAPi {
 
     @GET(HomeApi.api_article_list)
     fun getHomeArticleList(@Path("pageIndex") pageIndex: Int): Observable<ResponseBean<HomeArticleDataBean>>
+
+    @GET(HomeApi.api_article_category_list)
+    fun getArticleCategoryList(): Observable<ResponseBean<List<ArticleCategoryBean>>>
 }

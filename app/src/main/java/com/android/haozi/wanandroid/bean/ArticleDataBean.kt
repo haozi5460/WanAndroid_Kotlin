@@ -23,4 +23,5 @@ class ArticleDataBean(var apkLink: String?,
                       var type: Int = -1,
                       var userId: Int = -1,
                       var visible: Int = -1,
-                      var zan: Int = -1)
+                      var zan: Int = -1,
+                      var hasHearted: Boolean = false)

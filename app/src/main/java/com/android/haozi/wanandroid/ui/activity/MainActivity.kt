@@ -1,9 +1,5 @@
 package com.android.haozi.wanandroid.ui.activity
 
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -11,9 +7,11 @@ import androidx.core.view.GravityCompat
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.*
 import com.android.haozi.wanandroid.R
 import com.android.haozi.wanandroid.common.Constant
 import com.android.haozi.wanandroid.repository.LoginRepositroy
+import com.android.haozi.wanandroid.ui.fragment.HomeFragment
 import com.android.haozi.wanandroid.utils.PreferenceUtil
 import com.android.haozi.wanandroid.viewmode.LoginViewMode
 import kotlinx.android.synthetic.main.common_toolbar_layout.*
@@ -24,6 +22,7 @@ import kotlinx.android.synthetic.main.main_activity_navigation_layout.*
 class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelectedListener
                     , View.OnClickListener{
     var logoutViewMode: LoginViewMode? = null
+    lateinit var homeFragment: HomeFragment
 
     override fun getLayoutId(): Int {
         return R.layout.main_activity_layout
@@ -35,6 +34,16 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
         initViewClick()
         initViewData()
         initViewModle()
+        initFragment()
+    }
+
+    private fun initFragment() {
+        homeFragment = HomeFragment.newInstance()
+        with(supportFragmentManager){
+            beginTransaction().add(R.id.main_activity_content_framelayout,homeFragment)
+                .commit()
+        }
+
     }
 
     private fun initViewModle() {

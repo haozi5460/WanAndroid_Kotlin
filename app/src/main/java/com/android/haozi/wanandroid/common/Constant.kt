@@ -16,4 +16,5 @@ object Constant{
 
 object HomeApi{
     const val api_article_list = "/article/list/{pageIndex}/json"
+    const val api_article_category_list = "/tree/json"
 }

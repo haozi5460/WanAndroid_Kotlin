@@ -9,5 +9,6 @@ class ArticleCategoryBean(var children: List<ArticleCategoryBean>?,
                           var parentChapterId: Int = -1,
                           var  userControlSetTop: Boolean = false,
                           var visible: Int = -1,
-                          name: String?
-) : BaseExtendBean(name)
+                          name: String?,
+                          hasChoosed: Boolean = false
+) : BaseExtendBean(name,hasChoosed)
