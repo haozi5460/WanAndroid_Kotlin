@@ -1,4 +1,4 @@
-package com.android.haozi.wanandroid.view.extendview
+package com.android.haozi.wanandroid.ui.view.extendview
 
 import android.view.View
 

@@ -1,7 +1,7 @@
 package com.android.haozi.wanandroid.common
 
 import com.android.haozi.wanandroid.bean.ArticleCategoryBean
-import com.android.haozi.wanandroid.bean.HomeArticleDataBean
+import com.android.haozi.wanandroid.bean.ArticleHomeDataBean
 import com.android.haozi.wanandroid.bean.UserDataBean
 import com.android.haozi.wanandroid.bean.ResponseBean
 import io.reactivex.Observable
@@ -23,7 +23,7 @@ interface WanAndroidAPi {
     fun logout(): Observable<ResponseBean<UserDataBean>>
 
     @GET(HomeApi.api_article_list)
-    fun getHomeArticleList(@Path("pageIndex") pageIndex: Int): Observable<ResponseBean<HomeArticleDataBean>>
+    fun getArticleList(@Path("pageIndex") pageIndex: Int, @Query("cid") cid: String?): Observable<ResponseBean<ArticleHomeDataBean>>
 
     @GET(HomeApi.api_article_category_list)
     fun getArticleCategoryList(): Observable<ResponseBean<List<ArticleCategoryBean>>>

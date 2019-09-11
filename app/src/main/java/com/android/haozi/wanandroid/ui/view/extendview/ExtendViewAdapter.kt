@@ -1,4 +1,4 @@
-package com.android.haozi.wanandroid.view.extendview
+package com.android.haozi.wanandroid.ui.view.extendview
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -33,9 +33,11 @@ class ExtendViewAdapter : RecyclerView.Adapter<ExtendViewAdapter.ExtendViewHolde
         var view: View = LayoutInflater.from(context).inflate(R.layout.extend_view_item_text_layout,parent,false)
         var viewHolder = ExtendViewHolder(context,view)
         viewHolder.setOnItemClick(object : ExtendViewHolder.OnItemViewClickListener{
-            override fun onItemClick(view: View, position: Int) {
+            override fun onItemClick(view: View, position: Int, isNeedUpdateCheckState: Boolean) {
                 onItemViewClickListener?.onItemClick(view,position,dataList?.get(position))
-                updateDataState(position)
+                if(isNeedUpdateCheckState) {
+                    updateDataState(position)
+                }
             }
         })
         return viewHolder
@@ -58,6 +60,7 @@ class ExtendViewAdapter : RecyclerView.Adapter<ExtendViewAdapter.ExtendViewHolde
 
     class ExtendViewHolder(context: Context?, view: View): RecyclerView.ViewHolder(view) {
         var context: Context?
+        lateinit var onItemViewClickListener: OnItemViewClickListener
         init{
             this.context = context
         }
@@ -70,16 +73,21 @@ class ExtendViewAdapter : RecyclerView.Adapter<ExtendViewAdapter.ExtendViewHolde
             }else{
                 itemView.setBackgroundColor(ContextCompat.getColor(context!!,android.R.color.transparent))
             }
+
+            if(dataBean?.hasChoosed?:false){
+                onItemViewClickListener.onItemClick(this.itemView,adapterPosition,false)
+            }
         }
 
         fun setOnItemClick(onItemViewClickListener: OnItemViewClickListener){
+            this.onItemViewClickListener = onItemViewClickListener
             itemView.extend_item_text.setOnClickListener {
-                onItemViewClickListener.onItemClick(it,adapterPosition)
+                onItemViewClickListener.onItemClick(it,adapterPosition,true)
             }
         }
 
         interface OnItemViewClickListener{
-            fun onItemClick(view: View,position: Int)
+            fun onItemClick(view: View,position: Int, isNeedUpdateCheckState: Boolean)
         }
     }
 

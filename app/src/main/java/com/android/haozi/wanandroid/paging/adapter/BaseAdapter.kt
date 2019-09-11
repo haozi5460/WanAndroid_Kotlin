@@ -16,9 +16,11 @@ abstract class BaseAdapter<T> : RecyclerView.Adapter<BaseViewHolder<T>>{
         this.dataList = dataList
     }
 
+    abstract fun  getViewHolder(view: View) : BaseViewHolder<T>
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<T> {
         var view = LayoutInflater.from(context).inflate(getLayoutId(),parent,false)
-        var viewHolder = BaseViewHolder<T>(view)
+        var viewHolder = getViewHolder(view)
         viewHolder.onItemViewClickListener = object :
             BaseViewHolder.OnItemViewClickListener<T> {
             override fun onItemViewClick(view: View, position: Int, dataBean: T?) {

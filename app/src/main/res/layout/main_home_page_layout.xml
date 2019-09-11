@@ -5,13 +5,13 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <com.android.haozi.wanandroid.view.extendview.ExtendTextLayout
+    <com.android.haozi.wanandroid.ui.view.extendview.ExtendTextLayout
             android:id="@+id/home_page_category_extend"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:title="一级分类"/>
 
-    <com.android.haozi.wanandroid.view.extendview.ExtendTextLayout
+    <com.android.haozi.wanandroid.ui.view.extendview.ExtendTextLayout
             android:id="@+id/home_page_type_extend"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

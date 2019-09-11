@@ -12,7 +12,9 @@ open class BaseViewHolder<T>: RecyclerView.ViewHolder{
     }
 
     open fun setItemViewData(dataBean: T?){
-        onItemViewClickListener?.onItemViewClick(view,adapterPosition,dataBean)
+        view.setOnClickListener {
+            onItemViewClickListener?.onItemViewClick(view, adapterPosition, dataBean)
+        }
     }
 
     interface OnItemViewClickListener<T>{

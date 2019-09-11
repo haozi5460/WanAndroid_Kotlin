@@ -1,6 +1,6 @@
 package com.android.haozi.wanandroid.bean
 
-import com.android.haozi.wanandroid.view.extendview.BaseExtendBean
+import com.android.haozi.wanandroid.ui.view.extendview.BaseExtendBean
 
 class ArticleCategoryBean(var children: List<ArticleCategoryBean>?,
                           var courseId: Int = -1,

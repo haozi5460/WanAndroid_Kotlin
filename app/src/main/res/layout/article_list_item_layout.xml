@@ -10,7 +10,81 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_article_collect"
+            android:layout_marginLeft="20dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+            android:id="@+id/article_item_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="Android职业进阶直播课免费送"
+            android:textColor="@color/color_000000"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="16dp"
+            android:paddingRight="10dp"
+            app:layout_constraintLeft_toRightOf="@+id/article_item_collect"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"/>
+
+    <ImageView
+        android:id="@+id/article_item_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_article_top"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/article_item_title"
+        app:layout_constraintLeft_toRightOf="@+id/article_item_collect"/>
+
+    <ImageView
+            android:id="@+id/article_item_new"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_article_new"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            app:layout_goneMarginLeft="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/article_item_title"
+            app:layout_constraintLeft_toRightOf="@+id/article_item_top"/>
+
+    <TextView
+            android:id="@+id/article_item_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:text="作者：鸿洋"
+            android:textColor="@color/color_B5B5B5"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            app:layout_goneMarginLeft="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/article_item_title"
+            app:layout_constraintLeft_toRightOf="@+id/article_item_new"/>
+
+    <TextView
+            android:id="@+id/article_item_update_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:text="时间：1天前"
+            android:textColor="@color/color_B5B5B5"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/article_item_title"
+            app:layout_constraintLeft_toRightOf="@+id/article_item_author"/>
+
+    <View
+            android:layout_width="0dp"
+            android:layout_height="1px"
+            android:background="@color/color_c9c9c9"
+            android:layout_marginTop="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/article_item_author"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,32 +2,33 @@ package com.android.haozi.wanandroid.repository
 
 import android.annotation.SuppressLint
 import androidx.lifecycle.MutableLiveData
-import android.text.TextUtils
 import android.util.Log
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
 import com.android.haozi.wanandroid.bean.ArticleCategoryBean
-import com.android.haozi.wanandroid.bean.HomeArticleDataBean
+import com.android.haozi.wanandroid.bean.ArticleDataBean
+import com.android.haozi.wanandroid.bean.ArticleHomeDataBean
 import com.android.haozi.wanandroid.bean.ResponseBean
 import com.android.haozi.wanandroid.common.RetrofitManager
+import com.android.haozi.wanandroid.paging.datasource.ArticleListDataSourceFactory
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class ArticleRepository {
-    var homeArticleList = MutableLiveData<ResponseBean<HomeArticleDataBean>>()
+class ArticleRepository(var cid: String?) {
     var articleCategoryList = MutableLiveData<ResponseBean<List<ArticleCategoryBean>>>()
 
-    @SuppressLint("CheckResult")
-    fun getHomeArticleList(pageIndex: Int){
-        var wanAndroidAPi = RetrofitManager.get().getWanAndroidAPI()
+    var articleListDataSource = ArticleListDataSourceFactory(cid)
+    val articleListPagingConfig = PagedList.Config.Builder()
+        .setPageSize(20)
+        .setPrefetchDistance(50)
+        .setEnablePlaceholders(true)
+        .build()
+    var homeArticleList = LivePagedListBuilder<Int,ArticleDataBean>(articleListDataSource,articleListPagingConfig).build()
 
-        wanAndroidAPi?.getHomeArticleList(pageIndex)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                homeArticleList.value = it
-            },{
-                homeArticleList.value = ResponseBean(null as HomeArticleDataBean, 500, it.message)
-            })
+    fun invalidateDataSource(cid: String?){
+        articleListDataSource.invalidateDataSource(cid)
     }
+
 
     @SuppressLint("CheckResult")
     fun getArticleCategoryList(){
@@ -37,10 +38,12 @@ class ArticleRepository {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 articleCategoryList.value = it
-                Log.e("shihao","articleCategorylist =="+it.data.get(0).toString())
+                Log.e("shihao","articleCategorylist =="+it.data?.get(0).toString())
             },{
-                articleCategoryList.value = ResponseBean(null as List<ArticleCategoryBean>,500,it.message)
+                Log.e("shihao","articleCategorylist =="+articleCategoryList)
                 Log.e("shihao","articleCategorylist =="+articleCategoryList.value.toString())
+                var listData = listOf(ArticleCategoryBean(null,-1,-1,0,-1,false,-1,null,false))
+                articleCategoryList.value = ResponseBean(listData,500,it.message)
             })
     }
 }

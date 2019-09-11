@@ -1,4 +1,4 @@
-package com.android.haozi.wanandroid.view.extendview
+package com.android.haozi.wanandroid.ui.view.extendview
 
 import android.content.Context
 import android.content.res.TypedArray
@@ -7,12 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.LinearLayout
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.android.haozi.wanandroid.R
-import com.android.haozi.wanandroid.view.extendview.BaseExtendBean
 import kotlinx.android.synthetic.main.extend_text_layout.view.*
 
 class ExtendTextLayout : FrameLayout, View.OnClickListener, ExtendViewAdapter.OnItemViewClickListener{
@@ -80,7 +78,10 @@ class ExtendTextLayout : FrameLayout, View.OnClickListener, ExtendViewAdapter.On
     }
 
     fun setExtendDataList(dataList: List<BaseExtendBean>?){
-        this.dataList = dataList
+//        this.dataList = dataList
+        dataList?.forEachIndexed { index, baseExtendBean ->
+            baseExtendBean.hasChoosed = if(index == 0) true else false
+        }
         extendViewAdapter?.updateDataList(dataList)
     }
 
