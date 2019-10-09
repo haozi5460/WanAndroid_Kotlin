@@ -17,17 +17,33 @@
             android:layout_height="wrap_content"
             app:title="二级分类"/>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/main_home_swipe_refresh"
+    <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                    android:id="@+id/main_home_swipe_refresh"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-        <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/main_home_recyclerview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/main_home_recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-        </androidx.recyclerview.widget.RecyclerView>
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+                </androidx.recyclerview.widget.RecyclerView>
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
+            <Button
+                    android:id="@+id/try_again"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:text="Try Again"
+                    android:textAllCaps="false"
+                    android:visibility="gone"/>
+    </FrameLayout>
 </LinearLayout>

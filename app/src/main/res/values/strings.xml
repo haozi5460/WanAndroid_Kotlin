@@ -18,4 +18,7 @@
     <string name="home_public_number">公众号</string>
     <string name="article_item_author">作者:&#160;%1$s</string>
     <string name="article_item_update_time">时间:&#160;%1$s</string>
+    <string name="publish_time_minute">%1$s分钟前</string>
+    <string name="publish_time_hour">%1$s小时前</string>
+    <string name="publish_time_day">%1$s天前</string>
 </resources>

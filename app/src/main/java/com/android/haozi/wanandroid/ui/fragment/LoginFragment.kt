@@ -43,7 +43,6 @@ class LoginFragment : BaseFragment(), View.OnClickListener {
         })[LoginViewMode::class.java]
 
         loginViewMode.loginData?.observe(this, Observer {
-            Log.i("shihao","response ="+it?.toString());
             if(it?.errorCode == 0 && TextUtils.isEmpty(it.errorMsg)){
                 saveUserInfo(it)
                 Toast.makeText(context, "Login Success.", Toast.LENGTH_SHORT).show()
@@ -56,10 +55,10 @@ class LoginFragment : BaseFragment(), View.OnClickListener {
     private fun saveUserInfo(responseBean: ResponseBean<UserDataBean>) {
         var userName: String by PreferenceUtil(Constant.UserName,"")
         var userId: Int by PreferenceUtil(Constant.UserId,0)
-        var hasUserLogin: Boolean by PreferenceUtil(Constant.HasUserLogin, false)
+//        var hasUserLogin: Boolean by PreferenceUtil(Constant.HasUserLogin, false)
         userName = responseBean.data?.username!!
         userId = responseBean.data?.id
-        hasUserLogin = true
+//        hasUserLogin = true
 
         startActivity(Intent(activity, MainActivity::class.java))
         activity?.finish()

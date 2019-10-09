@@ -70,7 +70,6 @@ class RegisterFragment : BaseFragment() {
 
     private fun recordRegisterAccount() {
         registerViewModel?.registerData?.observe(this, Observer {
-            Log.e("shihao","response ="+it?.toString());
             if(it?.errorCode == 0 && TextUtils.isEmpty(it.errorMsg)){
                 recordAccount(it)
             }else{
@@ -82,11 +81,11 @@ class RegisterFragment : BaseFragment() {
     private fun recordAccount(responseBean: ResponseBean<UserDataBean>) {
         var userName by PreferenceUtil(Constant.UserName, "")
         var userId by PreferenceUtil(Constant.UserId, 0)
-        var hasLogin by PreferenceUtil(Constant.HasUserLogin, false)
+//        var hasLogin by PreferenceUtil(Constant.HasUserLogin, false)
 
         userId = responseBean.data.id
         userName = responseBean.data?.username!!
-        hasLogin = true
+//        hasLogin = true
 
         Toast.makeText(context, "WanAndroid账号注册成功！", Toast.LENGTH_SHORT).show()
         startActivity(Intent(activity,MainActivity::class.java))

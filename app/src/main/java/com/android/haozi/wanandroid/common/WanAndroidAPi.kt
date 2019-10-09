@@ -1,9 +1,6 @@
 package com.android.haozi.wanandroid.common
 
-import com.android.haozi.wanandroid.bean.ArticleCategoryBean
-import com.android.haozi.wanandroid.bean.ArticleHomeDataBean
-import com.android.haozi.wanandroid.bean.UserDataBean
-import com.android.haozi.wanandroid.bean.ResponseBean
+import com.android.haozi.wanandroid.bean.*
 import io.reactivex.Observable
 import retrofit2.http.*
 
@@ -27,4 +24,13 @@ interface WanAndroidAPi {
 
     @GET(HomeApi.api_article_category_list)
     fun getArticleCategoryList(): Observable<ResponseBean<List<ArticleCategoryBean>>>
+
+    @GET(HomeApi.api_article_top_list)
+    fun getArticleTopList(): Observable<ResponseBean<List<ArticleDataBean>>>
+
+    @POST(CollectApi.api_collect_article)
+    fun collectArticleById(@Path("articleID") articleId: Int?): Observable<ResponseBean<String>>
+
+    @POST(CollectApi.api_uncollect_article)
+    fun unCollectArticleById(@Path("articleID") articleId: Int?): Observable<ResponseBean<String>>
 }

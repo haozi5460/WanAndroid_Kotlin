@@ -5,11 +5,11 @@ import android.view.View
 import androidx.recyclerview.widget.DiffUtil
 import com.android.haozi.wanandroid.R
 import com.android.haozi.wanandroid.bean.ArticleDataBean
+import com.android.haozi.wanandroid.utils.Util
 import kotlinx.android.synthetic.main.article_list_item_layout.view.*
 
-class ArticleListAdapter(context: Context) : BasePagedListAdapter<ArticleDataBean>(context,
-    diffCallback
-) {
+class ArticleListAdapter(context: Context) : BasePagedListAdapter<ArticleDataBean>(context, diffCallback) {
+    var onArticleCollectListener: OnArticleCollectListener<ArticleDataBean>? = null
 
     companion object{
         val diffCallback = object : DiffUtil.ItemCallback<ArticleDataBean>() {
@@ -37,10 +37,16 @@ class ArticleListAdapter(context: Context) : BasePagedListAdapter<ArticleDataBea
             itemView.article_item_top.visibility = if(dataBean?.type?:-1 == 1) View.VISIBLE else View.GONE
             itemView.article_item_new.visibility = if(dataBean?.fresh?:false) View.VISIBLE else View.GONE
             itemView.article_item_author.text = this@ArticleListAdapter.context.getString(R.string.article_item_author,dataBean?.author)
+            itemView.article_item_update_time.text = context.getString(R.string.article_item_update_time,Util.getArticlePublishTime(context,dataBean?.publishTime?:0))
             itemView.article_item_collect.setOnClickListener {
                 dataBean?.collect = if(dataBean?.collect?:false) false else true
                 notifyItemChanged(adapterPosition)
+                onArticleCollectListener?.onArticleCollectClick(dataBean)
             }
         }
+    }
+
+    interface OnArticleCollectListener<T>{
+        fun onArticleCollectClick(dataBean: T?)
     }
 }

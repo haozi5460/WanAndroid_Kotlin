@@ -8,7 +8,7 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil.ItemCallback
 
 abstract class BasePagedListAdapter<T> : PagedListAdapter<T,BaseViewHolder<T>>{
-    public var context: Context
+    var context: Context
     var onItemClickListener: OnItemClickListener<T>? = null
 
     constructor(context: Context, diffCallback: ItemCallback<T>):super(diffCallback){

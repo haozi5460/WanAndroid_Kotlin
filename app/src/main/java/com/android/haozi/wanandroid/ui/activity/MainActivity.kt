@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.lifecycle.*
 import com.android.haozi.wanandroid.R
 import com.android.haozi.wanandroid.common.Constant
+import com.android.haozi.wanandroid.common.WanCookieManager
 import com.android.haozi.wanandroid.repository.LoginRepositroy
 import com.android.haozi.wanandroid.ui.fragment.HomeFragment
 import com.android.haozi.wanandroid.utils.PreferenceUtil
@@ -57,8 +58,9 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
             Toast.makeText(this, it?.errorMsg,Toast.LENGTH_SHORT).show()
             if(it?.errorCode == 200){
                 startActivity(Intent(this, LoginActivity::class.java))
-                var hasUserLogin by PreferenceUtil(Constant.HasUserLogin,false)
-                hasUserLogin = false
+//                var hasUserLogin by PreferenceUtil(Constant.HasUserLogin,false)
+//                hasUserLogin = false
+                WanCookieManager.clearAllCookies()
                 this.finish()
             }
         })

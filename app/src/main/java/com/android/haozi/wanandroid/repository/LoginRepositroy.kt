@@ -16,7 +16,7 @@ class LoginRepositroy {
     var logOutData = MutableLiveData<ResponseBean<UserDataBean>>()
 
     fun postLogin(username: String , password: String){
-        var wanAndroidApi = RetrofitManager.get().getWanAndroidAPI()
+        var wanAndroidApi = RetrofitManager.init().getWanAndroidAPI()
 
         wanAndroidApi.login(username,password)
             .subscribeOn(Schedulers.io())
@@ -42,7 +42,7 @@ class LoginRepositroy {
     }
 
     fun registerAccount(username: String, password: String, repassword: String){
-        var wanAndroidAPi = RetrofitManager.get().getWanAndroidAPI()
+        var wanAndroidAPi = RetrofitManager.init().getWanAndroidAPI()
         wanAndroidAPi.registerAccount(username,password,repassword)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
@@ -66,7 +66,7 @@ class LoginRepositroy {
     }
 
     fun logOut(){
-        var wanAndroidAPi = RetrofitManager.get().getWanAndroidAPI()
+        var wanAndroidAPi = RetrofitManager.init().getWanAndroidAPI()
         wanAndroidAPi.logout()
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
